@@ -10,6 +10,8 @@
 > See [MOBILE.md](MOBILE.md) for interface behavior, tests and development notes.
 > This project is not an official GCHQ release.
 
+**Try the mobile version:** [CyberChef Mobile Beta](https://jordanhardee.com/cyberchef-mobile/index.html)
+
 [![](https://github.com/gchq/CyberChef/workflows/Master%20Build,%20Test%20&%20Deploy/badge.svg)](https://github.com/gchq/CyberChef/actions?query=workflow%3A%22Master+Build%2C+Test+%26+Deploy%22)
 [![npm](https://img.shields.io/npm/v/cyberchef.svg)](https://www.npmjs.com/package/cyberchef)
 [![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/gchq/CyberChef/blob/master/LICENSE)
@@ -93,8 +95,8 @@ If you want to develop CyberChef or run it without Docker, you can build it dire
 **Setup**
 
 ```bash
-git clone https://github.com/gchq/CyberChef.git
-cd CyberChef
+git clone https://github.com/jordanhardee/CyberChef-Mobile.git
+cd CyberChef-Mobile
 npm install
 ```
 
