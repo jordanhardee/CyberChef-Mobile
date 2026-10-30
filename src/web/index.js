@@ -17,6 +17,7 @@ import * as CanvasComponents from "../core/lib/CanvasComponents.mjs";
 
 // CyberChef
 import App from "./App.mjs";
+import setupMobileLayout from "./MobileLayout.mjs";
 import Categories from "../core/config/Categories.json" with { type: "json" };
 import OperationConfig from "../core/config/OperationConfig.json" with { type: "json" };
 
@@ -58,6 +59,7 @@ function main() {
     document.removeEventListener("DOMContentLoaded", main, false);
     window.app = new App(Categories, OperationConfig, defaultFavourites, defaultOptions);
     window.app.setup();
+    setupMobileLayout(window.app);
 }
 
 window.compileTime = moment.tz(COMPILE_TIME, "DD/MM/YYYY HH:mm:ss z", "UTC").valueOf();

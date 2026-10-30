@@ -204,6 +204,10 @@ class OperationsWaiter {
         $(el).find("[data-toggle=popover]").addBack("[data-toggle=popover]")
             .popover({trigger: "manual"})
             .on("mouseenter", function(e) {
+                // A touch tap can synthesize mouseenter. Showing the desktop
+                // hover popover over the touched item steals its click, so
+                // mobile operation selection must not open hover popovers.
+                if (window.matchMedia("(max-width: 1023px)").matches) return;
                 if (e.buttons > 0 || self.manager.recipe.dragInProgress) return; // Mouse button held down - likely dragging an operation
                 const _this = this;
                 $(this).popover("show");

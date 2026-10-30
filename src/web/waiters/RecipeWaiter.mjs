@@ -30,6 +30,15 @@ class RecipeWaiter {
         // list. Both Sortable instances must maintain it: several drop targets rely on it to tell an
         // operation drag apart from a file or text drag.
         this.dragInProgress = false;
+
+        // The desktop drag gesture steals vertical swipes on touch screens.
+        // Mobile uses tap-to-add and explicit recipe reorder buttons instead.
+        this.mobileDragQuery = window.matchMedia("(max-width: 1023px)");
+        this.mobileDragQuery.addEventListener("change", () => {
+            document.querySelectorAll("#operations .op-list, #rec-list").forEach(list => {
+                Sortable.get(list)?.option("disabled", this.mobileDragQuery.matches);
+            });
+        });
     }
 
 
@@ -43,6 +52,7 @@ class RecipeWaiter {
         Sortable.create(recList, {
             group: "recipe",
             sort: true,
+            disabled: this.mobileDragQuery.matches,
             animation: 0,
             delay: 0,
             filter: ".arg",
@@ -104,6 +114,7 @@ class RecipeWaiter {
                 put: false,
             },
             sort: false,
+            disabled: this.mobileDragQuery.matches,
             setData: function(dataTransfer, dragEl) {
                 dataTransfer.setData("Text", dragEl.textContent);
             },
@@ -322,6 +333,7 @@ class RecipeWaiter {
      * @param {event} e
      */
     operationDblclick(e) {
+        if (window.matchMedia("(max-width: 1023px)").matches) return;
         e.target.remove();
         this.opRemove(e);
     }
@@ -335,6 +347,7 @@ class RecipeWaiter {
      * @param {event} e
      */
     operationChildDblclick(e) {
+        if (window.matchMedia("(max-width: 1023px)").matches) return;
         e.target.parentNode.remove();
         this.opRemove(e);
     }

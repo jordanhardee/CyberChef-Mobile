@@ -23,6 +23,7 @@
 <html lang="en" class="classic">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
         <title>CyberChef</title>
 
         <meta name="copyright" content="Crown Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %>" />
@@ -134,7 +135,7 @@
             window.addEventListener("error", loadingErrorHandler);
         </script>
     </head>
-    <body>
+    <body class="mobile-panel-input">
         <!-- Preloader overlay -->
         <div id="loader-wrapper">
             <div id="preloader" class="loader"></div>
@@ -146,6 +147,28 @@
             <i class="material-icons" aria-hidden="true">star</i>
         </button>
         <div tabindex="0" id="content-wrapper">
+            <header id="mobile-header" aria-label="CyberChef mobile toolbar">
+                <div class="mobile-brand">
+                    <img src="<%- require('../static/images/logo/cyberchef_hat.svg') %>" alt="" aria-hidden="true">
+                    <span>CyberChef</span>
+                    <span class="mobile-brand-label">MOBILE</span>
+                </div>
+                <div class="mobile-header-actions">
+                    <button type="button" id="mobile-bake" class="mobile-primary-action" aria-label="Bake recipe and view output">
+                        <i class="material-icons" aria-hidden="true">play_arrow</i> Bake
+                    </button>
+                    <div class="mobile-menu-wrapper">
+                        <button type="button" id="mobile-menu-toggle" class="mobile-icon-button" aria-label="More options" aria-expanded="false" aria-controls="mobile-menu">
+                            <i class="material-icons" aria-hidden="true">more_vert</i>
+                        </button>
+                        <div id="mobile-menu" hidden>
+                            <button type="button" data-original-click="options"><i class="material-icons" aria-hidden="true">settings</i> Settings</button>
+                            <button type="button" data-original-click="support"><i class="material-icons" aria-hidden="true">help_outline</i> About &amp; help</button>
+                            <button type="button" data-original-click="download"><i class="material-icons" aria-hidden="true">file_download</i> Download</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
             <div id="banner" class="row">
                 <div class="col" style="text-align: left; padding-left: 10px;">
                     <a href="#" data-toggle="modal" data-target="#download-modal" data-help-title="Downloading CyberChef" data-help="<p>CyberChef can be downloaded to run locally or hosted within your own network. It has no server-side component so all that is required is that the ZIP file is uncompressed and the files are accessible.</p><p>As a user, it is worth noting that unofficial versions of CyberChef could have been modified to introduce Input and/or Recipe exfiltration. We recommend always using the official, open source, up-to-date version of CyberChef hosted at <a href='https://gchq.github.io/CyberChef'>https://gchq.github.io/CyberChef</a> if accessible.</p><p>The Network tab in your browser's Developer console (F12) can be used to inspect the network requests made by a website. This can confirm that no data is uploaded when a CyberChef recipe is baked.</p>">Download CyberChef <i class="material-icons">file_download</i></a>
@@ -167,6 +190,21 @@
                     <a href="#" id="support" data-toggle="modal" data-target="#support-modal" data-help-title="About / Support" data-help="This pane provides information about the CyberChef web app, how to use some of the features, and how to raise bug reports.">About / Support <i class="material-icons">help</i></a>
                 </div>
             </div>
+            <nav id="mobile-nav" aria-label="Workspace panels">
+                <button type="button" data-mobile-panel="input" aria-controls="input" aria-pressed="true">
+                    <i class="material-icons" aria-hidden="true">edit_note</i><span>Input</span>
+                </button>
+                <button type="button" data-mobile-panel="operations" aria-controls="operations" aria-pressed="false">
+                    <i class="material-icons" aria-hidden="true">search</i><span>Operations</span>
+                </button>
+                <button type="button" data-mobile-panel="recipe" aria-controls="recipe" aria-pressed="false">
+                    <i class="material-icons" aria-hidden="true">format_list_numbered</i><span>Recipe</span>
+                    <span class="mobile-recipe-count" aria-label="Recipe operations">0</span>
+                </button>
+                <button type="button" data-mobile-panel="output" aria-controls="output" aria-pressed="false">
+                    <i class="material-icons" aria-hidden="true">description</i><span>Output</span>
+                </button>
+            </nav>
             <div id="workspace-wrapper">
                 <div id="operations" class="split split-horizontal no-select">
                     <div class="title no-select" data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
@@ -181,6 +219,9 @@
                 <div id="recipe" class="split split-horizontal no-select" data-help-title="Recipe pane" data-help="<p>The Recipe pane is where your chosen Operations are configured. If you are a programmer, think of these as functions. If you are not a programmer, these are like steps in a cake recipe. The Input data will be processed based on the Operations in your Recipe.</p><ul><li>To reorder, simply drag and drop the Operations into the order your require</li><li>To remove an operation, either double click it, or drag it outside of the Recipe pane</li></ul><p>The arguments (or 'Ingredients' in CyberChef terminology) can be configured to change how an Operation processes the data.</p>">
                     <div class="title no-select">
                         Recipe
+                        <button type="button" id="mobile-add-operation" aria-label="Add an operation to the recipe">
+                            <i class="material-icons" aria-hidden="true">add</i> Add
+                        </button>
                         <span class="pane-controls hide-on-maximised-output">
                             <button type="button" aria-label="Hide arguments" class="btn btn-primary bmd-btn-icon" id="hide-icon" data-toggle="tooltip" title="Hide arguments" hide-args="false" data-help-title="Hiding every Operation's argument view in a Recipe" data-help="Clicking 'Hide arguments' will hide all the argument views for every Operation in the Recipe, to save space when you have too many Operation in your Recipe">
                                 <i class="material-icons">keyboard_arrow_up</i>

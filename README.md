@@ -1,5 +1,15 @@
 # CyberChef
 
+> **FYI THIS IS VIBE CODED:** This mobile friendly version of CyberChef was generated, broken, tested, and fixed after initial testing with ChatGPT 6.1-Sol. I’m not some super smart master hacker beep boop 1337 programmer, but it DOES work upon initial tests on my iPhone. Maybe someone will find it useful idk. I was just like “why doesn’t this work on my phone that’s lame” lmao. If you’re on a computer screen it works like normal, but if the window is made small enough… BAM mobile friendly UI— enjoy!
+>
+> I haven’t like, actually reviewed the code either btw. I’m assuming it’s solid but maybe don’t use for super secret important stuff without auditing it idk.
+
+> **CyberChef Mobile** is an unofficial, touch-friendly adaptation of GCHQ's CyberChef.
+> The original operations and recipe engine are unchanged; phones and tablets use
+> a responsive workspace while desktop users retain the familiar split-pane layout.
+> See [MOBILE.md](MOBILE.md) for interface behavior, tests and development notes.
+> This project is not an official GCHQ release.
+
 [![](https://github.com/gchq/CyberChef/workflows/Master%20Build,%20Test%20&%20Deploy/badge.svg)](https://github.com/gchq/CyberChef/actions?query=workflow%3A%22Master+Build%2C+Test+%26+Deploy%22)
 [![npm](https://img.shields.io/npm/v/cyberchef.svg)](https://www.npmjs.com/package/cyberchef)
 [![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/gchq/CyberChef/blob/master/LICENSE)

@@ -82,6 +82,11 @@ class HTMLOperation {
      */
     toFullHtml() {
         let html = `<div class="op-title">${Utils.escapeHtml(this.name)}</div>
+        <div class="mobile-recipe-actions">
+            <button type="button" class="mobile-move-up" aria-label="Move ${Utils.escapeHtml(this.name)} up" title="Move up"><i class="material-icons" aria-hidden="true">arrow_upward</i></button>
+            <button type="button" class="mobile-move-down" aria-label="Move ${Utils.escapeHtml(this.name)} down" title="Move down"><i class="material-icons" aria-hidden="true">arrow_downward</i></button>
+            <button type="button" class="mobile-remove-operation" aria-label="Remove ${Utils.escapeHtml(this.name)}" title="Remove operation"><i class="material-icons" aria-hidden="true">close</i></button>
+        </div>
         <div class="ingredients">`;
 
         for (let i = 0; i < this.ingList.length; i++) {

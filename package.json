@@ -212,6 +212,7 @@
     "test": "npx grunt configTests && node --no-warnings --no-deprecation --openssl-legacy-provider tests/node/index.mjs && node --no-warnings --no-deprecation --openssl-legacy-provider --trace-uncaught tests/operations/index.mjs",
     "testnodeconsumer": "npx grunt testnodeconsumer",
     "testui": "npx grunt testui",
+    "test:mobile": "node tests/browser/mobile-smoke.cjs",
     "testuidev": "npx nightwatch --env=dev",
     "lint": "npx grunt lint",
     "lint:grammar": "cspell ./src",
